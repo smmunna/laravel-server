@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [HomeController::class, 'index']);
+Route::post("/login", [AuthController::class, 'login']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    //All secure URL's
+    Route::get('/users', [UserController::class, 'usersList']);
+});
+
+// Routes Handler Error
+Route::fallback(function () {
+    return response()->json([
+        'success' => false,
+        'message' => '404 Not Found'
+    ], 404);
 });

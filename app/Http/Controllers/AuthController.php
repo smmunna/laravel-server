@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-   
     // user registration 
     public function registration(Request $request)
     {
@@ -59,13 +58,27 @@ class AuthController extends Controller
         // Save user
         $user->save();
 
-        return response()->json(['success' => true, 'message' =>'User saved successfully']);
+        return response()->json(['success' => true, 'message' => 'User saved successfully']);
     }
 
     //user login
     public function login(Request $request)
     {
-       
-    }
+        $user = User::where('email', $request->email)->first();
+        // print_r($data);
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response([
+                'message' => ['These credentials do not match our records.']
+            ], 404);
+        }
 
+        $token = $user->createToken('my-app-token')->plainTextToken;
+
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+
+        return response($response, 201);
+    }
 }
