@@ -22,6 +22,10 @@
 ```javascript
 php artisan storage:link
 ```
+3. Now Run the server
+```javascript
+php artisan server
+```
 
 ### Backend Purpose(Rest API)
 
@@ -39,14 +43,14 @@ POST http://localhost:8000/api/users
    POST http://localhost:8000/api/login
    ```
    Give email and password what you have inserted into the database
-   ```bash
-   {
-  "email":"munna@gmail.com",
-  "password":"1234"
-   }
+   ```javascript
+      {
+         "email":"munna@gmail.com",
+         "password":"1234"
+      }
    ```
    Then you will get the user and `token` from the response
-   ```bash
+   ```javascript
    {
    "user": {
       "id": 1,
