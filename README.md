@@ -25,10 +25,72 @@ php artisan storage:link
 
 ### Backend Purpose(Rest API)
 
-1. Goto this route to show json data
+1. Goto this route show the response of this server
 ```javascript
-http://localhost:8000/api/users
+http://localhost:8000
+```
+2. If you don't have any data into the database then insert one user to the database
+```javascript
+POST http://localhost:8000/api/users
+```
+3. Get users list from the database
+   1. You have to hit the login api first 
+   ```javascript
+   POST http://localhost:8000/api/login
+   ```
+   Give email and password what you have inserted into the database
+   ```bash
+   {
+  "email":"munna@gmail.com",
+  "password":"1234"
+   }
+   ```
+   Then you will get the user and `token` from the response
+   ```bash
+   {
+   "user": {
+      "id": 1,
+      "name": "Sm Munna",
+      "email": "munna@gmail.com",
+      "email_verified_at": null,
+      "phone": "01935991255",
+      "photo": "uploads/photos/user_20241018_152131_67127cfb6e66e.png",
+      "address": "Sarishabari, Jamalpur",
+      "role": "user",
+      "created_at": "2024-10-18T15:21:31.000000Z",
+      "updated_at": "2024-10-18T15:21:31.000000Z"
+   },
+   "token": "3|OJ63d8AVvUVmCBG1FZeaC6qoYvtLkmjZIG0wHsglc6ddf2c0"
+   }
+   ```
+   For getting the users list you have to goto `Headers`
+   ```javascript
+   Accept     application/json
+   ```
+   Then goto `Auth` and give Bearer `token` <br>
+   Now Hit  this url
+```javascript
+GET http://localhost:8000/api/users
+```
+Now you will get the response like this:
+```javascript
+[
+  {
+    "id": 1,
+    "name": "Sm Munna",
+    "email": "munna@gmail.com",
+    "email_verified_at": null,
+    "password": "$2y$12$.cd/djg/9LI.9NYcgGRRHussZpjZQEzUlbod9Wyu0A75zikJKilIq",
+    "phone": "01935991255",
+    "photo": "uploads/photos/user_20241018_152131_67127cfb6e66e.png",
+    "address": "Sarishabari, Jamalpur",
+    "role": "user",
+    "remember_token": null,
+    "created_at": "2024-10-18 15:21:31",
+    "updated_at": "2024-10-18 15:21:31"
+  }
+]
 ```
 
 ### Authentication Methods
-1. Sanctum Authentication added
+Sanctum Authentication added
