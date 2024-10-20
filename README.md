@@ -29,7 +29,7 @@ php artisan server
 
 ### Backend Purpose(Rest API)
 
-1. Goto this route show the response of this server
+1. Goto `Postman` and goto `new request` and give this route to show the response of this server
 ```javascript
 http://localhost:8000
 ```
@@ -41,7 +41,7 @@ Goto `form data` to add user info. Then you will get the response like this, sho
 ![image](https://github.com/user-attachments/assets/5d853eda-ef46-4751-802d-82de1f911c2e)
 
 3. Get users list from the database
-   1. You have to hit the login api first 
+   1. You have to hit the login api first because your user list api inside a authentication middleware. Ohter wise can not see the users list. 
    ```javascript
    POST http://localhost:8000/api/login
    ```
@@ -101,3 +101,13 @@ Now you will get the response like this:
 
 ### Authentication Methods
 Sanctum Authentication added
+
+### Built in API Lists, routes/api.php
+1. Home
+GET  http://localhost:8000
+2. Login, Registration and Logout
+POST http://localhost:8000/api/register
+POST http://localhost:8000/api/login
+
+Users List:
+GET http://localhost:8000/api/users
