@@ -112,10 +112,9 @@ Sanctum Authentication added
 
 ### Built in API Lists, routes/api.php
 1. Home
-GET  http://localhost:8000
+   - GET  http://localhost:8000
 2. Login, Registration and Logout
-POST http://localhost:8000/api/register
-POST http://localhost:8000/api/login
-
-Users List:
-GET http://localhost:8000/api/users
+   - POST http://localhost:8000/api/register 
+   - POST http://localhost:8000/api/login 
+3. Users List:
+   - GET http://localhost:8000/api/users
