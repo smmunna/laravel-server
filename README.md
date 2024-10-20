@@ -37,10 +37,9 @@ http://localhost:8000
 ```javascript
 POST http://localhost:8000/api/register
 ```
-Goto `form data` 
+Goto `form data` to add user info. Then you will get the response like this, show in the right side.
 ![image](https://github.com/user-attachments/assets/5d853eda-ef46-4751-802d-82de1f911c2e)
 
- Then you will get the response like this, show in the right side
 3. Get users list from the database
    1. You have to hit the login api first 
    ```javascript
