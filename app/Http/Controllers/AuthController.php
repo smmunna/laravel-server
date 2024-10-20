@@ -24,7 +24,7 @@ class AuthController extends Controller
 
         // Check if validation fails
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return response()->json(['success' => false, 'errors' => $validator->errors()]);
         }
 
         // Create new user

@@ -35,8 +35,11 @@ http://localhost:8000
 ```
 2. If you don't have any data into the database then insert one user to the database
 ```javascript
-POST http://localhost:8000/api/users
+POST http://localhost:8000/api/register
 ```
+Goto `form data` 
+![Follow this](image.png)
+ Then you will get the response like this, show in the right side
 3. Get users list from the database
    1. You have to hit the login api first 
    ```javascript

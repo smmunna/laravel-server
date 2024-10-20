@@ -22,7 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
+// POST API, Will always outside of the middleware group
 Route::post("/login", [AuthController::class, 'login']); //login user
+Route::post("/register", [AuthController::class, 'registration']); //register user
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
