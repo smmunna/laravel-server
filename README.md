@@ -70,6 +70,14 @@ Goto `form data` to add user info. Then you will get the response like this, sho
    "token": "3|OJ63d8AVvUVmCBG1FZeaC6qoYvtLkmjZIG0wHsglc6ddf2c0"
    }
    ```
+   Goto your `postman` and configure `Authorization` like this:
+   ![image](https://github.com/user-attachments/assets/54232467-96b6-477f-92c6-c9c6f77b2a0a)
+   Then goto `Headers` configure like this way:
+   ![image](https://github.com/user-attachments/assets/21509838-991b-4b3a-a0c8-e5e7c48514d5)
+   Now Hit the url and you will get response like this:
+   ![image](https://github.com/user-attachments/assets/22c66add-cadc-4731-9e7e-752a6ced122b)
+
+   Here is the configuration for `Thunder Client` Software follow this:
    For getting the users list you have to goto `Headers`
    ```javascript
    Accept     application/json
