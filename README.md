@@ -38,7 +38,7 @@ http://localhost:8000
 POST http://localhost:8000/api/register
 ```
 Goto `form data` 
-![Follow this](image.png)
+![image](https://github.com/user-attachments/assets/b467fa47-34b6-4938-aabe-1e8464751a04)
  Then you will get the response like this, show in the right side
 3. Get users list from the database
    1. You have to hit the login api first 
