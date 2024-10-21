@@ -3,7 +3,7 @@
 **laravel/framework": "^10.10"**
 **"php": "^8.1"**
 ### Frontend Purpose -Follow this way
-1. After cloning the starter template , you need to run those commands for setup the authentication for laravel app when you will use it for frontend purposes.
+1. After cloning the Server , you need to run those commands for setup.
    1. Clone repository first
       ```javascript
       https://github.com/smmunna/laravel-server.git
@@ -22,7 +22,7 @@
 ```javascript
 php artisan storage:link
 ```
-3. Now Run the server
+1. Now Run the server
 ```javascript
 php artisan server
 ```
