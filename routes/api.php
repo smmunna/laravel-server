@@ -27,10 +27,24 @@ Route::post("/login", [AuthController::class, 'login']); //login user
 Route::post("/register", [AuthController::class, 'registration']); //register user
 
 
-Route::group(['middleware' => 'auth:sanctum'], function () {
-    //All secure URL's
-    Route::get('/users', [UserController::class, 'usersList']); //getting users details
+// Route::group(['middleware' => 'auth:sanctum'], function () {
+//     //All secure URL's
+//     Route::get('/users', [UserController::class, 'usersList']); //getting users details
+// });
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    // General routes for authenticated users
+    
+    // Admin-only routes
+    Route::group(['middleware' => 'role:admin'], function () {
+    });
+    
+    // Editor-only routes
+    Route::group(['middleware' => 'role:user'], function () {
+        Route::get('/users', [UserController::class, 'usersList']);
+    });
 });
+
 
 
 // Routes Handler Error
