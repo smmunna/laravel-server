@@ -30,14 +30,14 @@ Route::post("/register", [AuthController::class, 'registration']); //register us
 // Only for authenticate users
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // General routes for authenticated users
-    Route::get('/users', [UserController::class, 'usersList']);
-
+    
     // Admin-only routes
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
         // add routes here
+        Route::get('/users', [UserController::class, 'usersList']);
     });
 
-    // user-only routes
+    // user-only routes, apply throttle:role:user for app/provider/RouteServiceProvider at the bottom rate limiter.
     Route::group(['middleware' => 'role:user', 'prefix' => 'user'], function () {
         // add routes here
     });
