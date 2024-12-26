@@ -26,18 +26,18 @@ Route::get('/', [HomeController::class, 'index']);
 Route::post("/login", [AuthController::class, 'login']); //login user
 Route::post("/register", [AuthController::class, 'registration']); //register user
 
+Route::get('/users', [UserController::class, 'usersList']);
 
 // Only for authenticate users
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    // General routes for authenticated users
-    
+    // Add General routes for authenticated users
+
     // Admin-only routes
     Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
         // add routes here
-        Route::get('/users', [UserController::class, 'usersList']);
     });
 
-    // user-only routes, apply throttle:role:user for app/provider/RouteServiceProvider at the bottom rate limiter.
+    // user-only routes, apply api rate limit throttle:role:user check it app/provider/RouteServiceProvider.
     Route::group(['middleware' => 'role:user', 'prefix' => 'user'], function () {
         // add routes here
     });
