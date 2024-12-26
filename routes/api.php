@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //server url will be like this: http://localhost:8000/api/v1/....
-Route::group(['prefix' => '/v1', 'middleware' => 'custom_cors'], function () {
+Route::group(['prefix' => '/v1', 'middleware' => 'custom_cors'], function () { // goto app/middleware/CustomeCors.php further customization
     Route::get('/', [HomeController::class, 'index']); //home routes
 
     // POST API, Will always outside of the middleware group
