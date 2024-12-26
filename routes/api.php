@@ -27,21 +27,19 @@ Route::post("/login", [AuthController::class, 'login']); //login user
 Route::post("/register", [AuthController::class, 'registration']); //register user
 
 
-// Route::group(['middleware' => 'auth:sanctum'], function () {
-//     //All secure URL's
-//     Route::get('/users', [UserController::class, 'usersList']); //getting users details
-// });
-
+// Only for authenticate users
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // General routes for authenticated users
-    
+    Route::get('/users', [UserController::class, 'usersList']);
+
     // Admin-only routes
-    Route::group(['middleware' => 'role:admin'], function () {
+    Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
+        // add routes here
     });
-    
-    // Editor-only routes
-    Route::group(['middleware' => 'role:user'], function () {
-        Route::get('/users', [UserController::class, 'usersList']);
+
+    // user-only routes
+    Route::group(['middleware' => 'role:user', 'prefix' => 'user'], function () {
+        // add routes here
     });
 });
 
