@@ -16,33 +16,32 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
-Route::get('/', [HomeController::class, 'index']);
+//server url will be like this: http://localhost:8000/api/v1/....
+Route::group(['prefix' => '/v1'], function () {
+    Route::get('/', [HomeController::class, 'index']);
 
-// POST API, Will always outside of the middleware group
-Route::post("/login", [AuthController::class, 'login']); //login user
-Route::post("/register", [AuthController::class, 'registration']); //register user
+    // POST API, Will always outside of the middleware group
+    Route::post("/login", [AuthController::class, 'login']); //login user
+    Route::post("/register", [AuthController::class, 'registration']); //register user
 
-Route::get('/users', [UserController::class, 'usersList']);
+    Route::get('/users', [UserController::class, 'usersList']);
 
-// Only for authenticate users
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    // Add General routes for authenticated users
+    // Only for authenticated users
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+        // Add General routes for authenticated users
 
-    // Admin-only routes
-    Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
-        // add routes here
-    });
+        // Admin-only routes, apply API rate limit throttle:role:admin
+        Route::group(['middleware' => 'role:admin', 'prefix' => 'admin'], function () {
+            // Admin-specific routes here
+        });
 
-    // user-only routes, apply api rate limit throttle:role:user check it app/provider/RouteServiceProvider.
-    Route::group(['middleware' => 'role:user', 'prefix' => 'user'], function () {
-        // add routes here
+        // User-only routes, apply API rate limit throttle:role:user
+        Route::group(['middleware' => 'role:user', 'prefix' => 'user'], function () {
+            // User-specific routes here
+        });
     });
 });
-
 
 
 // Routes Handler Error
