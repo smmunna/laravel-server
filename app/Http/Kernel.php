@@ -22,6 +22,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \App\Http\Middleware\CustomCors::class, //custom cors middleware for specific domain access
     ];
 
     /**
@@ -70,6 +71,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // Other middlewares...
         'role' => \App\Http\Middleware\RoleMiddleware::class,
+        'custom_cors' => \App\Http\Middleware\CustomCors::class,
     ];
     
 }

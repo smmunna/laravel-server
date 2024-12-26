@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 //server url will be like this: http://localhost:8000/api/v1/....
-Route::group(['prefix' => '/v1'], function () {
-    Route::get('/', [HomeController::class, 'index']);
+Route::group(['prefix' => '/v1', 'middleware' => 'custom_cors'], function () {
+    Route::get('/', [HomeController::class, 'index']); //home routes
 
     // POST API, Will always outside of the middleware group
     Route::post("/login", [AuthController::class, 'login']); //login user
