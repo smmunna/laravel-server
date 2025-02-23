@@ -22,9 +22,12 @@
 ```javascript
 php artisan storage:link
 ```
+3. You need to create `vendor` folder. You can copy it from your existing server from locally. Without `vendor/autoload.php` file Project will not run.
+4. You can ignore `middleware => custom_cors`. When you develop this project , you can ignore it. Otherwise project will not work. 
+5. Goto `app/Http/kernel.php` comment the `25 number line`. When you make it production level, then you can uncomment it.
 1. Now Run the server
 ```javascript
-php artisan server
+php artisan serve
 ```
 
 ### Backend Purpose(Rest API)

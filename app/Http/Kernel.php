@@ -22,7 +22,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \App\Http\Middleware\CustomCors::class, //custom cors middleware for specific domain access
+        // \App\Http\Middleware\CustomCors::class, //custom cors middleware for specific domain access
     ];
 
     /**

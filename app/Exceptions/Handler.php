@@ -11,7 +11,10 @@ class Handler extends ExceptionHandler
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         return response()->json([
-            'data' => 'Authentication Failed',
+            'message' => 'Unauthorized',
+            'description' => 'Authentication is required to access this resource.',
+            'status' => 401,
+            'tip' => 'Please provide a valid authentication token in the request header.'
         ], 401);
     }
 }
